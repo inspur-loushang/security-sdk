@@ -9,26 +9,7 @@
 <dependency>
 	<groupId>com.inspur.security</groupId>
 	<artifactId>security-sdk</artifactId>
-	<version>1.0.1-alpha</version>
-</dependency>
-<!-- keycloak -->
-<dependency>
-	<groupId>org.keycloak</groupId>
-	<artifactId>keycloak-core</artifactId>
-	<version>3.4.0.Final</version>
-	<scope>provided</scope>
-</dependency>
-<dependency>
-	<groupId>org.keycloak</groupId>
-	<artifactId>keycloak-adapter-core</artifactId>
-	<version>3.4.0.Final</version>
-	<scope>provided</scope>
-</dependency>
-<dependency>
-	<groupId>org.keycloak</groupId>
-	<artifactId>keycloak-adapter-spi</artifactId>
-	<version>3.4.0.Final</version>
-	<scope>provided</scope>
+	<version>0.9.0-alpha</version>
 </dependency>
 ```
 ## 3. web.xml配置
