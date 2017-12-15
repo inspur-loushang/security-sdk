@@ -18,7 +18,18 @@ public class SecurityProvider {
 	 * @return String 服务根URL
 	 */
 	public static String getSecurityContextUrl() {
-		
+
 		return KeycloakUtil.getSecurityContextUrl();
+	}
+
+	/**
+	 * 获取注销url
+	 * 
+	 * @param redirectUrl
+	 * @return
+	 */
+	public static String getLogoutUrl(String redirectUrl) {
+		
+		return KeycloakUtil.getLogoutUrl(redirectUrl);
 	}
 }
