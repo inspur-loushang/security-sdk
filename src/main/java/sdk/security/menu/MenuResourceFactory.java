@@ -112,7 +112,7 @@ public class MenuResourceFactory {
 		ClassLoader ccl = MenuResourceFactory.class.getClassLoader();
 		in = ccl.getResourceAsStream(menuFile);
 		try {
-			json = IOUtils.toString(in);
+			json = IOUtils.toString(in, "utf-8");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
