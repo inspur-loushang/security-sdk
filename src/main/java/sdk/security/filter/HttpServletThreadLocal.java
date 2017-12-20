@@ -24,7 +24,7 @@ public class HttpServletThreadLocal {
 		return currentResponse.get();
 	}
 
-	public static void setRequest(HttpServletResponse servletResponse) {
+	public static void setResponse(HttpServletResponse servletResponse) {
 		currentResponse.set(servletResponse);
 	}
 
