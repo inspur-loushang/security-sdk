@@ -27,11 +27,10 @@ public class RestRequestProvider {
 	private static Properties properties = new Properties();
 	private static RestTemplate restTemplate = new RestTemplate();
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static <T> T get(String url, Class<T> responseType, Map uriVariables, Map queryVariables) {
+	public static <T> T get(String url, Class<T> responseType, Map<String,String> uriVariables, Map<String,String> queryVariables) {
 
 		if (uriVariables == null) {
-			uriVariables = new HashMap();
+			uriVariables = new HashMap<String,String>();
 		}
 
 		String endpoint = buildUrl(url);
@@ -39,8 +38,10 @@ public class RestRequestProvider {
 		HttpEntity<Map> entity = new HttpEntity<Map>(buildAuthorizationHeader(queryVariables));
 
 		if (queryVariables != null && !queryVariables.isEmpty()) {
-			MultiValueMap map = new LinkedMultiValueMap();
-			map.putAll(queryVariables);
+			MultiValueMap<String,String> map =new LinkedMultiValueMap<String,String>();
+			for (String key : queryVariables.keySet()) {
+				   map.add(key, queryVariables.get(key));
+			}
 			UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(endpoint);
 			builder.queryParams(map);
 			endpoint = builder.build().toUriString();
@@ -51,12 +52,11 @@ public class RestRequestProvider {
 		return response.getBody();
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static <T> T post(String url, Class<T> responseType, Map uriVariables, Map bodyVariables
+	public static <T> T post(String url, Class<T> responseType, Map<String,String> uriVariables, Map<String,String> bodyVariables
 			) {
 
 		if (uriVariables == null) {
-			uriVariables = new HashMap();
+			uriVariables = new HashMap<String,String>();
 		}
 
 		String endpoint = buildUrl(url);
@@ -67,11 +67,10 @@ public class RestRequestProvider {
 		return response.getBody();
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static <T> T put(String url, Class<T> responseType, Map uriVariables, Map bodyVariables) {
+	public static <T> T put(String url, Class<T> responseType, Map<String,String> uriVariables, Map<String,String> bodyVariables) {
 
 		if (uriVariables == null) {
-			uriVariables = new HashMap();
+			uriVariables = new HashMap<String,String>();
 		}
 
 		String endpoint = buildUrl(url);
@@ -82,11 +81,10 @@ public class RestRequestProvider {
 		return response.getBody();
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static <T> T delete(String url, Class<T> responseType, Map uriVariables, Map bodyVariables) {
+	public static <T> T delete(String url, Class<T> responseType, Map<String,String> uriVariables, Map<String,String> bodyVariables) {
 
 		if (uriVariables == null) {
-			uriVariables = new HashMap();
+			uriVariables = new HashMap<String,String>();
 		}
 
 		String endpoint = buildUrl(url);
@@ -137,8 +135,7 @@ public class RestRequestProvider {
 	 * 
 	 * @return HttpHeaders
 	 */
-	@SuppressWarnings("rawtypes")
-	private static HttpHeaders buildAuthorizationHeader(Map bodyVariables) {
+	private static HttpHeaders buildAuthorizationHeader(Map<String,String> bodyVariables) {
 
 		String accessToken = KeycloakUtil.getKeycloakSecurityContext().getTokenString();
 
