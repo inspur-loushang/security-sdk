@@ -145,6 +145,8 @@ public class RestRequestProvider {
 		if (bodyVariables != null && !bodyVariables.isEmpty() && bodyVariables.containsKey("accessToken")) {
 			if (bodyVariables.get("accessToken") != null && !"".equals(bodyVariables.get("accessToken"))) {
 				accessToken = bodyVariables.get("accessToken").toString();
+			}else{
+				bodyVariables.remove("accessToken");
 			}
 		}
 		HttpHeaders headers = new HttpHeaders();
