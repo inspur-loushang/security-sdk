@@ -26,6 +26,10 @@ public class KeycloakUtil {
 		return getKeycloakSecurityContext().getToken();
 	}
 
+	public static String getAccessTokenString() {
+		return getKeycloakSecurityContext().getTokenString();
+	}
+
 	public static String getRealm() {
 		return getKeycloakSecurityContext().getRealm();
 
