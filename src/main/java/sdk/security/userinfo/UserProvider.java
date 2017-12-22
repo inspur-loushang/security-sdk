@@ -9,12 +9,15 @@ public class UserProvider {
 	private static IUserProvider userProvider = SDKFactory.getUserProviderImpl();
 
 	/**
-	 * 获取当前登录用户的详细信息
-	 * 
-	 * @return Map，key分别为：userName[用户名]，email[邮箱地址]，...
-	 */
-	public static Map<String, String> getUserDetails() {
-		return userProvider.getUserDetails();
+     * 根据用户ID获取详细信息
+     * @param userId[用户标识]
+     * @return Map,key分别为：
+     *          userId[用户ID]
+     *          userName[用户名]
+     *          email[邮箱]
+     */
+	public static Map<String, Object> getUserInfo(String userId) {
+		return userProvider.getUserInfo(userId);
 	}
 
 }
