@@ -1,6 +1,10 @@
 package sdk.security.filter;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -10,11 +14,10 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import sdk.security.authc.AuthenticationProvider;
+import sdk.security.authz.AuthorizationProvider;
 
-public class SDKFilter implements Filter {
+public class SDKAuthzFilter implements Filter {
 
 	public void destroy() {
 	}
@@ -34,24 +37,32 @@ public class SDKFilter implements Filter {
 
 	private void doFilterAuthz(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws IOException, ServletException {
-		//将HttpServletRequest对象放到线程变量中
-		HttpServletThreadLocal.clearRequest();
-		HttpServletThreadLocal.setRequest(request);
-		//将用户标识放到session中
-		HttpSession session = request.getSession();
-		String userId = null;
-		try {
-			userId = AuthenticationProvider.getLoginUserId();
-		} catch (Exception e) {
-			userId = "";
+		String requestUrl = request.getRequestURL().toString();
+		List<Map<String, String>> list = AuthorizationProvider.getResources(null);
+		boolean authz = false;
+		if (!list.isEmpty()) {
+			for (Map<String, String> map : list) {
+				String regex = map.get("url");
+				Pattern pattern = Pattern.compile(regex);
+				Matcher matcher = pattern.matcher(requestUrl);
+				authz = matcher.find();
+				if (authz) {
+					break;
+				} else {
+					continue;
+				}
+			}
+		} else {
+			authz = true;
 		}
-		session.setAttribute("userId", userId);
-		
-		filterChain.doFilter(request, response);
+		if (authz) {
+			filterChain.doFilter(request, response);
+		} else {
+			return;
+		}
 	}
 
 	public void init(FilterConfig filterConfig) throws ServletException {
 
 	}
-
 }
