@@ -28,7 +28,7 @@ public class RestRequestProvider {
      * @return
      */
     public static <T> T get(String endpoint, Class<T> responseType, Map<String, String> uriVariables,
-            Map<String, String> queryVariables) {
+            Map<String, Object> queryVariables) {
 
         if (uriVariables == null) {
             uriVariables = new HashMap<String, String>();
@@ -39,7 +39,7 @@ public class RestRequestProvider {
         if (queryVariables != null && !queryVariables.isEmpty()) {
             MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
             for (String key : queryVariables.keySet()) {
-                map.add(key, queryVariables.get(key));
+                map.add(key, (String) queryVariables.get(key));
             }
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(endpoint);
             builder.queryParams(map);
@@ -58,11 +58,11 @@ public class RestRequestProvider {
      * @param endpoint[请求URL，支持占位符]
      * @param responseType[返回值类型]
      * @param uriVariables[URI中占位符变量，Map<String,String>类型]
-     * @param bodyVariables[BODY内容，Map<String,String>类型]
+     * @param bodyVariables[BODY内容，Map<String,Object>类型]
      * @return
      */
     public static <T> T post(String endpoint, Class<T> responseType, Map<String, String> uriVariables,
-            Map<String, String> bodyVariables) {
+            Map<String, Object> bodyVariables) {
 
         if (uriVariables == null) {
             uriVariables = new HashMap<String, String>();
@@ -82,11 +82,11 @@ public class RestRequestProvider {
      * @param endpoint[请求URL，支持占位符]
      * @param responseType[返回值类型]
      * @param uriVariables[URI中占位符变量，Map<String,String>类型]
-     * @param bodyVariables[BODY内容，Map<String,String>类型]
+     * @param bodyVariables[BODY内容，Map<String,Object>类型]
      * @return
      */
     public static <T> T put(String endpoint, Class<T> responseType, Map<String, String> uriVariables,
-            Map<String, String> bodyVariables) {
+            Map<String, Object> bodyVariables) {
 
         if (uriVariables == null) {
             uriVariables = new HashMap<String, String>();
@@ -106,11 +106,11 @@ public class RestRequestProvider {
      * @param endpoint[请求URL，支持占位符]
      * @param responseType[返回值类型]
      * @param uriVariables[URI中占位符变量，Map<String,String>类型]
-     * @param bodyVariables[BODY内容，Map<String,String>类型]
+     * @param bodyVariables[BODY内容，Map<String,Object>类型]
      * @return
      */
     public static <T> T delete(String endpoint, Class<T> responseType, Map<String, String> uriVariables,
-            Map<String, String> bodyVariables) {
+            Map<String, Object> bodyVariables) {
 
         if (uriVariables == null) {
             uriVariables = new HashMap<String, String>();
@@ -131,7 +131,7 @@ public class RestRequestProvider {
      * 
      * @return HttpHeaders
      */
-    private static HttpHeaders buildAuthorizationHeader(Map<String, String> bodyVariables) {
+    private static HttpHeaders buildAuthorizationHeader(Map<String, Object> bodyVariables) {
     	
     	String accessToken = AuthenticationProvider.getToken();
 
