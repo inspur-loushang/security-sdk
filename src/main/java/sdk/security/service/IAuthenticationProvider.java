@@ -11,13 +11,6 @@ public interface IAuthenticationProvider {
 	public String getLoginUserId();
 
 	/**
-	 * 获取当前登录用户信息
-	 * 
-	 * @return Map，key分别为：userId[用户ID]，userName[用户名]
-	 */
-	public Map<String, String> getLoginUserInfo();
-
-	/**
 	 * 获取当前登录用户Token
 	 * 
 	 * @return String，token信息
@@ -35,5 +28,5 @@ public interface IAuthenticationProvider {
 	 * 
 	 * @return Map，key分别为：userName[用户名]，email[邮箱地址]，...
 	 */
-	public Map<String, String> getUserDetails();
+	public Map<String, String> getLoginUserInfo();
 }

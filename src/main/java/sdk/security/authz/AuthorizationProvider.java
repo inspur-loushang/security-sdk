@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import sdk.security.service.IAuthorizationProvider;
-import sdk.security.util.SDKFactory;
+import sdk.security.service.factory.SDKFactory;
 
 /**
  * 授权

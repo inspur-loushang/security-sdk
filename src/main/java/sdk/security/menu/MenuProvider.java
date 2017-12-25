@@ -1,21 +1,20 @@
 package sdk.security.menu;
 
-import java.util.List;
-
-import sdk.security.menu.data.Menu;
+import sdk.security.service.IMenuProvider;
+import sdk.security.service.factory.SDKFactory;
 
 public class MenuProvider {
 
-	private static MenuResourceFactory factory = new MenuResourceFactory("securitySDKMenu.json");
+    private static IMenuProvider menuProvider = SDKFactory.getMenuProviderImpl();
 
 	/**
 	 * 获取当前登录用户有权限的菜单
 	 * 
 	 * @param parentId[父级菜单id,可以为空]
-	 * @return
+	 * @return json
 	 */
-	public static List<Menu> getAuthzMenu(String parentId) {
-		return factory.getAuthzMenu(parentId);
+	public static String getAuthzMenu(String parentId) {
+		return menuProvider.getAuthzMenu(parentId);
 	}
 
 	/**
@@ -24,7 +23,7 @@ public class MenuProvider {
 	 * @param parentId[父级菜单id,可以为空]
 	 * @return
 	 */
-	public static List<Menu> getMenu(String parentId) {
-		return factory.getMenu(parentId);
+	public static String getMenu(String parentId) {
+		return menuProvider.getMenu(parentId);
 	}
 }

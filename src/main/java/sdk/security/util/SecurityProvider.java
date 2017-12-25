@@ -1,35 +1,29 @@
 package sdk.security.util;
 
+import sdk.security.service.ISecurityProvider;
+import sdk.security.service.factory.SDKFactory;
+
 public class SecurityProvider {
 
-	/**
-	 * 获取当前应用所属的域信息
-	 * 
-	 * @return String realm[域名称]
-	 */
-	public static String getRealmInfo() {
-
-		return KeycloakUtil.getRealm();
-	}
-
-	/**
+    private static ISecurityProvider securityProvider = SDKFactory.getSecurityProviderImpl();
+	
+    /**
 	 * 获取安全中心的服务根地址
 	 * 
 	 * @return String 服务根URL
 	 */
-	public static String getSecurityContextUrl() {
-
-		return KeycloakUtil.getSecurityContextUrl();
+	public static String getSecurityContextUrl(){
+	    return securityProvider.getSecurityContextUrl();
 	}
 
 	/**
 	 * 获取注销url
 	 * 
-	 * @param redirectUrl
+	 * @param backUrl
 	 * @return
 	 */
-	public static String getLogoutUrl(String redirectUrl) {
-		
-		return KeycloakUtil.getLogoutUrl(redirectUrl);
+	public static String getLogoutUrl(String backUrl){
+	    return securityProvider.getLogoutUrl(backUrl);
 	}
+	
 }

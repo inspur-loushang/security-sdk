@@ -3,7 +3,7 @@ package sdk.security.authc;
 import java.util.Map;
 
 import sdk.security.service.IAuthenticationProvider;
-import sdk.security.util.SDKFactory;
+import sdk.security.service.factory.SDKFactory;
 
 /**
  * 认证
@@ -20,15 +20,6 @@ public class AuthenticationProvider {
 	 */
 	public static String getLoginUserId() {
 		return authenticationProvider.getLoginUserId();
-	}
-
-	/**
-	 * 获取当前登录用户信息
-	 * 
-	 * @return Map，key分别为：userId[用户ID]，userName[用户名]
-	 */
-	public static Map<String, String> getLoginUserInfo() {
-		return authenticationProvider.getLoginUserInfo();
 	}
 
 	/**
@@ -54,8 +45,8 @@ public class AuthenticationProvider {
 	 * 
 	 * @return Map，key分别为：userName[用户名]，email[邮箱地址]，...
 	 */
-	public static Map<String, String> getUserDetails() {
-		return authenticationProvider.getUserDetails();
+	public static Map<String, String> getLoginUserInfo() {
+		return authenticationProvider.getLoginUserInfo();
 	}
 
 }

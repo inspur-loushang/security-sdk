@@ -1,4 +1,4 @@
-package sdk.security.filter;
+package sdk.security.util;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

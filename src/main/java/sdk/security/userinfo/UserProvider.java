@@ -3,9 +3,10 @@ package sdk.security.userinfo;
 import java.util.Map;
 
 import sdk.security.service.IUserProvider;
-import sdk.security.util.SDKFactory;
+import sdk.security.service.factory.SDKFactory;
 
 public class UserProvider {
+    
 	private static IUserProvider userProvider = SDKFactory.getUserProviderImpl();
 
 	/**
@@ -16,7 +17,7 @@ public class UserProvider {
      *          userName[用户名]
      *          email[邮箱]
      */
-	public static Map<String, Object> getUserInfo(String userId) {
+	public static Map<String, String> getUserInfo(String userId) {
 		return userProvider.getUserInfo(userId);
 	}
 

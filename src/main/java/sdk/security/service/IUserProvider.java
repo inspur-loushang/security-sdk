@@ -12,6 +12,6 @@ public interface IUserProvider {
      *          userName[用户名]
      *          email[邮箱]
      */
-	public Map<String, Object> getUserInfo(String userId);
+	public Map<String, String> getUserInfo(String userId);
 
 }
