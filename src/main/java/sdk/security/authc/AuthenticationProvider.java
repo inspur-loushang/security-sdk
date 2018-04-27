@@ -30,6 +30,10 @@ public class AuthenticationProvider {
 	public static String getToken() {
 		return authenticationProvider.getToken();
 	}
+	
+	public static String getIDToken() {
+		return authenticationProvider.getIDToken();
+	}
 
 	/**
 	 * 获取当前登录用户userId-realmname

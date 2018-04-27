@@ -11,11 +11,18 @@ public interface IAuthenticationProvider {
 	public String getLoginUserId();
 
 	/**
-	 * 获取当前登录用户Token
+	 * 获取当前登录用户Access Token
 	 * 
 	 * @return String，token信息
 	 */
 	public String getToken();
+	
+	/**
+	 * 获取当前登录用户的ID Token
+	 * 
+	 * @return
+	 */
+	public String getIDToken();
 	
 	/**
 	 * 获取当前登录用户userId-realmname
