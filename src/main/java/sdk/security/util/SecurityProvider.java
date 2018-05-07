@@ -1,5 +1,7 @@
 package sdk.security.util;
 
+import java.util.Map;
+
 import sdk.security.service.ISecurityProvider;
 import sdk.security.service.factory.SDKFactory;
 
@@ -24,6 +26,22 @@ public class SecurityProvider {
 	 */
 	public static String getLogoutUrl(String backUrl){
 	    return securityProvider.getLogoutUrl(backUrl);
+	}
+	
+	public static String getRealmInfo(){
+		return securityProvider.getRealmInfo();
+	}
+	
+	public static String getTenantRealm(){
+		return securityProvider.getTenantRealm();
+	}
+	
+	public static Map<String, String> getTenantAdminUser(){
+		return securityProvider.getTenantAdminUser();
+	}
+	
+	public static Map<String, String> getTenantAdminUser(String tenantRealm) {
+		return securityProvider.getTenantAdminUser(tenantRealm);
 	}
 	
 }

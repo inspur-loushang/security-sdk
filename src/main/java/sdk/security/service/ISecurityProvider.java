@@ -1,5 +1,6 @@
 package sdk.security.service;
 
+import java.util.Map;
 
 public interface ISecurityProvider {
 
@@ -17,5 +18,33 @@ public interface ISecurityProvider {
      * @return
      */
     public String getLogoutUrl(String redirectUrl);
+    
+    /**
+     * 获取当前应用所属的Realm
+     * 
+     * @return
+     */
+    public String getRealmInfo();
 
+    /**
+     * 获取当前租户对应的Realm
+     * 
+     * @return
+     */
+    public String getTenantRealm();
+    
+    /**
+     * 获取当前租户的管理员信息
+     * 
+     * @return
+     */
+    public Map<String, String> getTenantAdminUser();
+    
+    /**
+     * 获取指定租户的管理员信息
+     * 
+     * @param tenantRealm 租户的Realm
+     * @return
+     */
+    public Map<String, String> getTenantAdminUser(String tenantRealm);
 }
