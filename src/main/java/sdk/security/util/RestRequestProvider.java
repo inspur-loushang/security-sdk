@@ -37,9 +37,9 @@ public class RestRequestProvider {
         HttpEntity<Map> entity = new HttpEntity<Map>(buildAuthorizationHeader(queryVariables));
 
         if (queryVariables != null && !queryVariables.isEmpty()) {
-            MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
+            MultiValueMap map = new LinkedMultiValueMap();
             for (String key : queryVariables.keySet()) {
-                map.add(key, (String) queryVariables.get(key));
+                map.add(key, queryVariables.get(key));
             }
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(endpoint);
             builder.queryParams(map);
