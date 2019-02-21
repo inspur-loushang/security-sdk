@@ -3,6 +3,9 @@
 ## Users
 
 ### queryUsers
+since security-keycloak-sdk 1.0.0
+
+```
 
 	/**
 	 * 查询用户列表
@@ -12,16 +15,20 @@
 	 * @return
 	 */
 	public List queryUsers(Map queryParams);
+```
 
 调用示例
+```
 
 	IUserProvider user = SDKFactory.getUserProviderImpl();
 	Map param = new HashMap();
 	param.put("userId", params.get("userId"));
 	param.put("userName", params.get("userName"));
 	List users = user.queryUsers(param);
+```
 	
 返回示例
+```
 
 	[
 	    {
@@ -49,3 +56,4 @@
 	        }
 	    }
 	]
+```

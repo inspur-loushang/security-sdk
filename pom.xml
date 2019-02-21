@@ -4,7 +4,7 @@
 
 	<groupId>com.inspur.security</groupId>
 	<artifactId>security-sdk</artifactId>
-	<version>1.0.0</version>
+	<version>1.2.0</version>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -42,29 +42,22 @@
 	<!-- 配置私服使用信息 -->
 	<repositories>
 		<repository>
-			<id>nexus-jar</id>
-			<name>Team Nexus jar Repository</name>
-			<url>http://10.110.13.14:8081/nexus/content/groups/inspur-loushang/</url>
-		</repository>
+          <id>nexus-jar</id>
+          <name>Team Nexus jar Repository</name>
+          <url>http://maven.inspur.com/repository/maven-public/</url>
+        </repository>
 	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>nexus-plugin</id>
-			<name>Team Nexus plugin Repository</name>
-			<url>http://10.110.13.14:8081/nexus/content/groups/inspur-loushang/</url>
-		</pluginRepository>
-	</pluginRepositories>
 	<distributionManagement>
 		<snapshotRepository>
 			<id>snapshots</id>
 			<name>Porject Snapshot</name>
-			<url>http://10.110.13.14:8081/nexus/content/repositories/snapshots/</url>
+			<url>http://10.111.25.60:8081/nexus/content/repositories/snapshots/</url>
 			<uniqueVersion>true</uniqueVersion>
 		</snapshotRepository>
 		<repository>
 			<id>releases</id>
 			<name>Porject Release</name>
-			<url>http://10.110.13.14:8081/nexus/content/repositories/releases/</url>
+			<url>http://10.111.25.60:8081/nexus/content/repositories/releases/</url>
 		</repository>
 	</distributionManagement>
 </project>
