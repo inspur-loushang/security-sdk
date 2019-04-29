@@ -13,9 +13,23 @@ public interface IUserProvider {
      *          userId[用户ID]
      *          userName[用户名]
      *          email[邮箱]
+     *          userType[用户类型]
      */
 	public Map<String, String> getUserInfo(String userId);
 
+    /**
+     * 根据用户ID获取详细信息
+     * 
+     * @param userId[用户标识]
+     * @param realm[用户所属realm]
+     * @return Map,key分别为：
+     *          userId[用户ID]
+     *          userName[用户名]
+     *          email[邮箱]
+     *          userType[用户类型]
+     */
+	public Map<String, String> getUserInfo(String userId, String realm);
+	
 	/**
 	 * 查询用户列表
 	 * 
