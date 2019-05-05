@@ -2,6 +2,7 @@ package sdk.security.authz;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import sdk.security.service.IAuthorizationProvider;
 import sdk.security.service.factory.SDKFactory;
@@ -37,5 +38,13 @@ public class AuthorizationProvider {
 	 */
 	public static List<Map<String, String>> getResources(String type) {
 		return authorizationProvider.getResources(type);
+	}
+	
+	public static List<Map> getPermissions() {
+		return authorizationProvider.getPermissions();
+	}
+	
+	public static Set<String> getPermissionResourceNames(){
+		return authorizationProvider.getPermissionResourceNames();
 	}
 }
