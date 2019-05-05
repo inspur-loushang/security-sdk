@@ -2,6 +2,7 @@ package sdk.security.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public interface IAuthorizationProvider {
 	/**
@@ -25,4 +26,7 @@ public interface IAuthorizationProvider {
 	 */
 	public List<Map<String, String>> getResources(String type);
 
+	public List<Map> getPermissions();
+	
+	public Set<String> getPermissionResourceNames();
 }

@@ -52,5 +52,25 @@ public class AuthenticationProvider {
 	public static Map<String, String> getLoginUserInfo() {
 		return authenticationProvider.getLoginUserInfo();
 	}
+	
+	/**
+	 * 设置自定义会话信息
+	 * 
+	 * @param key
+	 * @param value
+	 */
+	public static void setCustomSessionInfo(String key, Object value) {
+		authenticationProvider.setCustomSessionInfo(key, value);
+	}
+	
+	/**
+	 * 获取自定义会话信息
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public static Object getCustomSessionInfo(String key) {
+		return authenticationProvider.getCustomSessionInfo(key);
+	}
 
 }

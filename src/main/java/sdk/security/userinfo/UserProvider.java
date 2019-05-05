@@ -16,9 +16,14 @@ public class UserProvider {
      *          userId[用户ID]
      *          userName[用户名]
      *          email[邮箱]
+     *          userType[用户类型]
      */
 	public static Map<String, String> getUserInfo(String userId) {
 		return userProvider.getUserInfo(userId);
+	}
+	
+	public static Map<String, String> getUserInfo(String userId, String realm) {
+		return userProvider.getUserInfo(userId, realm);
 	}
 
 }

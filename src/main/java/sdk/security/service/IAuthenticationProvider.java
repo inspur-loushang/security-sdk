@@ -36,4 +36,20 @@ public interface IAuthenticationProvider {
 	 * @return Map，key分别为：userName[用户名]，email[邮箱地址]，...
 	 */
 	public Map<String, String> getLoginUserInfo();
+	
+	/**
+	 * 设置自定义会话信息
+	 * 
+	 * @param key
+	 * @param value
+	 */
+	public void setCustomSessionInfo(String key, Object value);
+	
+	/**
+	 * 获取自定义会话信息
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public Object getCustomSessionInfo(String key);
 }
